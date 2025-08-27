@@ -19,7 +19,7 @@ export default function Navbar({ darkmode, setDarkmode }) {
                 <div
                     className="
             absolute inset-0
-            backdrop-blur-xl
+            md:backdrop-blur-xl
           "
                 />
 
