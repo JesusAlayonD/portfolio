@@ -3,7 +3,7 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="min-h-screen flex items-center px-6 lg:px-12"
+            className="min-h-screen flex items-center px-6 lg:px-12 mb-10 md:mb-0"
         >
             <div className="mx-auto w-full max-w-6xl grid gap-10 md:gap-16 md:grid-cols-2">
                 {/* Left — Copy */}
