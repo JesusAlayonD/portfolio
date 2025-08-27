@@ -33,9 +33,24 @@ export default function Contact() {
                     </a>
                 </div>
 
-                {/* Right — Form (solo UI) */}
+                {/* Right — Form */}
                 <form
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        const name = e.target.name.value;
+                        const email = e.target.email.value;
+                        const subject = e.target.subject.value;
+                        const message = e.target.message.value;
+
+                        // Construir el mailto
+                        const mailtoLink = `mailto:jesusalayon@gmail.com?subject=${encodeURIComponent(
+                            subject
+                        )}&body=${encodeURIComponent(
+                            `From: ${name} (${email})\n\n${message}`
+                        )}`;
+
+                        window.location.href = mailtoLink;
+                    }}
                     className="space-y-5"
                 >
                     <div>
@@ -44,8 +59,10 @@ export default function Contact() {
                         </label>
                         <input
                             type="text"
+                            name="name"
                             placeholder="Luna"
                             className="mt-2 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required
                         />
                     </div>
 
@@ -55,8 +72,10 @@ export default function Contact() {
                         </label>
                         <input
                             type="email"
+                            name="email"
                             placeholder="luna@email.com"
                             className="mt-2 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required
                         />
                     </div>
 
@@ -66,8 +85,10 @@ export default function Contact() {
                         </label>
                         <input
                             type="text"
+                            name="subject"
                             placeholder="New Project"
                             className="mt-2 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required
                         />
                     </div>
 
@@ -77,23 +98,25 @@ export default function Contact() {
                         </label>
                         <textarea
                             rows="4"
+                            name="message"
                             placeholder="Hello!"
                             className="mt-2 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-white/5 px-4 py-3 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            required
                         />
                     </div>
 
                     <button
                         type="submit"
                         className="inline-flex items-center justify-center rounded-sm
-                    px-5 py-3 text-sm sm:text-base font-semibold 
-                    shadow-lg shadow-slate-900/5
-                    text-indigo-500
-                    hover:opacity-95 active:scale-[.99]
-                    border-2 border-indigo-500
-                    dark:bg-indigo-500
-                    dark:text-white
-                    hover:cursor-pointer
-                    "
+                px-5 py-3 text-sm sm:text-base font-semibold 
+                shadow-lg shadow-slate-900/5
+                text-indigo-500
+                hover:opacity-95 active:scale-[.99]
+                border-2 border-indigo-500
+                dark:bg-indigo-500
+                dark:text-white
+                hover:cursor-pointer
+              "
                     >
                         Let’s get in touch
                     </button>
