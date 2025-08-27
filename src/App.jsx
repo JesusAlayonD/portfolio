@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -12,6 +12,13 @@ import ScrollButtons from './components/ScrollButtons'
 
 function App() {
   const [darkmode, setDarkmode] = useState(false)
+
+  // Detectar preferencia del SO/navegador
+  useEffect(() => {
+    const prefersDark = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    setDarkmode(prefersDark)
+  }, [])
 
   return (
     <div className={darkmode ? 'dark' : ''}>
