@@ -41,7 +41,7 @@ export default function ScrollButtons() {
         <div
             className="
         fixed bottom-6 right-6 z-50
-        flex flex-col items-center gap-4
+        hidden md:flex flex-col items-center gap-4
       "
         >
             {/* Arriba (oculto en la primera sección) */}
