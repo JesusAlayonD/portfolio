@@ -43,7 +43,7 @@ export default function FunFacts() {
     useEffect(() => {
         autoplayRef.current = setInterval(() => {
             setIndex((i) => (i + 1) % len);
-        }, 6000);
+        }, 10000);
         return () => clearInterval(autoplayRef.current);
     }, [len]);
 
@@ -131,13 +131,18 @@ function Slide({ title, text, img, imgRight }) {
     return (
         <article className="shrink-0 w-full">
             <div
-                className={`
-          grid items-center gap-8 md:gap-12
-          md:grid-cols-2
-        `}
+                className="
+            grid items-center gap-8 md:gap-12
+            md:grid-cols-2
+          "
             >
                 {/* Texto */}
-                <div className={`${imgRight ? "order-1" : "order-2"} px-2 md:px-6`}>
+                <div
+                    className={`
+              order-1 px-2 md:px-6
+              ${imgRight ? "md:order-1" : "md:order-2"}
+            `}
+                >
                     <h3 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white">
                         {title}
                     </h3>
@@ -147,7 +152,12 @@ function Slide({ title, text, img, imgRight }) {
                 </div>
 
                 {/* Imagen */}
-                <div className={`${imgRight ? "order-2" : "order-1"} px-2 md:px-6`}>
+                <div
+                    className={`
+              order-2 px-2 md:px-6
+              ${imgRight ? "md:order-2" : "md:order-1"}
+            `}
+                >
                     <div className="aspect-[16/10] md:aspect-[4/3] w-full overflow-hidden rounded-2xl ring-1 ring-slate-200/60 dark:ring-white/10 shadow-xl">
                         <img
                             src={img}
@@ -161,3 +171,4 @@ function Slide({ title, text, img, imgRight }) {
         </article>
     );
 }
+
